@@ -18,10 +18,6 @@ const Alldays = ({ diary }) => {
         </p>
         <p className="onediary__diary">日時　：{src.date}</p>
       </div>
-      //   <div key={i} className="onediary">
-      //     投稿者{src.firstname} {src.lastname} 日記：{src.diary}
-      //     日時：{src.date}
-      //   </div>
     );
   });
   return <div>{diaryLists}</div>;

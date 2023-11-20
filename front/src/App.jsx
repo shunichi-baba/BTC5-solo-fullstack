@@ -4,6 +4,7 @@ import axios from "axios";
 import Alldays from "./components/Alldays";
 import Oneperson from "./components/Oneperson";
 import Header from "./components/Header";
+import Img from "./assets/diary.jpeg";
 
 function App() {
   const [diary, setDiary] = useState([]);
@@ -41,6 +42,7 @@ function App() {
 
   return (
     <>
+      {/* <img src={Img} alt="diary picture" /> */}
       <h1>公開日記</h1>
       <div>
         <Header

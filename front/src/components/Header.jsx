@@ -14,6 +14,9 @@ const Header = ({ setPost }) => {
     const postlastName = inputlastname.current.value;
     const postdiary = inputDiary.current.value;
     const now = new Date().toLocaleDateString();
+    inputFirstname.current.value = "";
+    inputlastname.current.value = "";
+    inputDiary.current.value = "";
     // console.log("1", postfirstName);
     // console.log("2", postlastName);
     // console.log("3", postdiary);
@@ -22,7 +25,7 @@ const Header = ({ setPost }) => {
     const post = async () => {
       await axios
         .post(`http://localhost:3000`, {
-          id: 16,
+          id: 18,
           firstname: `${postfirstName}`,
           lastname: `${postlastName}`,
           diary: `${postdiary}`,
@@ -36,7 +39,7 @@ const Header = ({ setPost }) => {
           console.log("通信に失敗しました");
         }); //失敗した場合(catch)
     };
-    // post();
+    post();
   };
 
   return (
@@ -48,7 +51,13 @@ const Header = ({ setPost }) => {
         <button onClick={inputButton}>投稿</button>
       </div>
       {/* <input type="text" ref={inputDiary} placeholder="今日の振り返りを入力" /> */}
-      <textarea ref={inputDiary} cols="50" rows="5" maxlength="300"></textarea>
+      <textarea
+        ref={inputDiary}
+        cols="50"
+        rows="5"
+        maxlength="300"
+        placeholder="今日の振り返りを入力して下さい"
+      ></textarea>
     </div>
   );
 };
