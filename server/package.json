@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "makeMigration": "knex migrate:make",
+    "makeMigration2": "knex migrate:make --knexfile db/knexfile.js",
+    "migrate": "knex migrate:latest ",
+    "migrate2": "knex migrate:latest --knexfile db/knexfile.js",
+    "rollback": "knex migrate:rollback  ",
+    "rollback2": "knex migrate:rollback --knexfile db/knexfile.js ",
+    "seed": "knex seed:run",
+    "seed2": "knex seed:run --knexfile db/knexfile.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "knex": "^3.0.1",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.1"
+  }
+}
