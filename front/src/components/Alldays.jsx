@@ -1,4 +1,5 @@
 import React from "react";
+import "./Alldays.css";
 
 const Alldays = ({ diary }) => {
   // console.log("@@@@@@@@@@@@@all",diary[0])
@@ -9,8 +10,18 @@ const Alldays = ({ diary }) => {
     //     console.log("aaaaaaaaaaa",src)
     return (
       <div key={i} className="onediary">
-        {src.firstname} {src.lastname} {src.diary}
+        <p className="onediary__name">
+          投稿者：{src.firstname} {src.lastname}
+        </p>
+        <p className="onediary__date">
+          <div className="onediary__date">日記　：{src.diary}</div>
+        </p>
+        <p className="onediary__diary">日時　：{src.date}</p>
       </div>
+      //   <div key={i} className="onediary">
+      //     投稿者{src.firstname} {src.lastname} 日記：{src.diary}
+      //     日時：{src.date}
+      //   </div>
     );
   });
   return <div>{diaryLists}</div>;

@@ -1,0 +1,10 @@
+.header {
+  background-color: aquamarine;
+  text-align: center;
+}
+.header__form {
+  margin-bottom: 10px;
+}
+.header__form button {
+  margin: 0px 10px;
+}

@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "makeMigration": "knex migrate:make",
     "makeMigration2": "knex migrate:make --knexfile db/knexfile.js",
@@ -13,7 +13,9 @@
     "rollback": "knex migrate:rollback  ",
     "rollback2": "knex migrate:rollback --knexfile db/knexfile.js ",
     "seed": "knex seed:run",
-    "seed2": "knex seed:run --knexfile db/knexfile.js"
+    "seed2": "knex seed:run --knexfile db/knexfile.js",
+    "build": "npm install",
+    "start": "node ./src/index.js"
   },
   "author": "",
   "license": "ISC",

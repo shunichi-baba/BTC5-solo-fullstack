@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import React from "react";
 import axios from "axios";
+import "./Header.css";
 
 const Header = ({ setPost }) => {
   // const Header = ({ firstname, lastname, postDiary }) => {
@@ -35,16 +36,19 @@ const Header = ({ setPost }) => {
           console.log("通信に失敗しました");
         }); //失敗した場合(catch)
     };
-    post();
+    // post();
   };
 
   return (
-    <div>
+    <div className="header">
       <p>投稿フォーム</p>
-      <input type="text" ref={inputFirstname} placeholder="firstname" />
-      <input type="text" ref={inputlastname} placeholder="lastname" />
-      <input type="text" ref={inputDiary} placeholder="今日の振り返りを入力" />
-      <button onClick={inputButton}>投稿</button>
+      <div className="header__form">
+        <input type="text" ref={inputFirstname} placeholder="firstname" />
+        <input type="text" ref={inputlastname} placeholder="lastname" />
+        <button onClick={inputButton}>投稿</button>
+      </div>
+      {/* <input type="text" ref={inputDiary} placeholder="今日の振り返りを入力" /> */}
+      <textarea ref={inputDiary} cols="50" rows="5" maxlength="300"></textarea>
     </div>
   );
 };

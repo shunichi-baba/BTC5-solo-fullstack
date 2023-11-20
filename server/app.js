@@ -1,14 +1,22 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
+require("dotenv").config();
 
 //jsonオブジェクトを認識できるようになる
 //フロントaxiosからはjson形式で送られる
 app.use(express.json());
+app.use("/", express.static(__dirname + "/public")); //デプロイで必要みたい_ここにフロント入れるのか？
 
 //knexfile読み込んでdb接続-----------------
-const config = require("./knexfile");
-const knex = require("knex")(config);
+// const config = require("./knexfile");
+// const knex = require("knex")(config);
+
+//環境変数設定----------------------------
+const knex1 = require("knex");
+const knexConfig = require("./knexfile");
+const environment = process.env.NODE_ENV;
+const knex = knex1(knexConfig[environment]);
 
 //CROSエラー回避-----------------------------
 const cors = require("cors");
@@ -52,4 +60,6 @@ app.post("/", async (req, res) => {
 app.listen(PORT, () => {
   console.log("server起動");
   console.log(`http://localhost:${PORT}`);
+  // console.log("@@@@@@@@@@@@env", process.env.NODE_ENV);
+  // console.log("@@@@@@@@@@@@env", knex);
 });

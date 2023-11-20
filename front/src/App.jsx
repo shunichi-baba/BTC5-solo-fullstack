@@ -50,11 +50,22 @@ function App() {
         />
       </div>
       <div>
-        <button onClick={(e) => setDisplay(true)}>Allday</button>
-        {/* <Alldays /> */}
-        <button onClick={(e) => setDisplay(false)}>Mydiary</button>
+        <div className="changepage">
+          <button
+            className="changepage__allday"
+            onClick={(e) => setDisplay(true)}
+          >
+            Allday
+          </button>
+          <button
+            className="changepage__mydiary"
+            onClick={(e) => setDisplay(false)}
+          >
+            Mydiary
+          </button>
+        </div>
       </div>
-      <div>
+      <div className="diarycontainer">
         {display ? <Alldays diary={diary} /> : <Oneperson diary={diary} />}
       </div>
     </>

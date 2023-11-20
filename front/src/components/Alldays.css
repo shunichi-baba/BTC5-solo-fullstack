@@ -1,0 +1,13 @@
+.onediary {
+  margin-bottom: 10px;
+  padding: 10px 0 10px 20px;
+  border: solid;
+  border-radius: 10px;
+  background-color: rgb(243, 237, 233);
+}
+p.onediary__date {
+  word-wrap: break-word;
+}
+textarea {
+  width: 90%;
+}
