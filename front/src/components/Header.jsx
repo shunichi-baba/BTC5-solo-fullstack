@@ -54,8 +54,18 @@ const Header = ({ setPost, diary }) => {
     <div className="header">
       <p>投稿フォーム</p>
       <div className="header__form">
-        <input type="text" ref={inputFirstname} placeholder="firstname" />
-        <input type="text" ref={inputlastname} placeholder="lastname" />
+        <input
+          type="text"
+          className="firstnameinput"
+          ref={inputFirstname}
+          placeholder="firstname"
+        />
+        <input
+          type="text"
+          className="lastnameinput"
+          ref={inputlastname}
+          placeholder="lastname"
+        />
         <button onClick={inputButton}>投稿</button>
       </div>
       {/* <input type="text" ref={inputDiary} placeholder="今日の振り返りを入力" /> */}

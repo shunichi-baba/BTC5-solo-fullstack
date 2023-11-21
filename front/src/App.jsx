@@ -37,7 +37,7 @@ function App() {
   return (
     <>
       {/* <img src={Img} alt="diary picture" /> */}
-      <h1>公開日記</h1>
+      <h1>公　開　日　記</h1>
       <div>
         <Header
           setfirstName={setFirstname}

@@ -2,8 +2,7 @@ body {
   max-width: 1280px;
   /* margin: 0 auto; */
   padding: 2rem;
-  /* text-align: center; */
-  background-color: aliceblue;
+  background-color: rgb(249, 240, 219);
 }
 h1 {
   text-align: center;
@@ -18,24 +17,22 @@ h1 {
 
 .changepage__allday {
   margin-right: 20px;
+  box-shadow: 0px 8px #434242;
 }
-.changepage__allday:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.changepage__allday:active {
+  box-shadow: none;
+  position: relative;
+  top: 8px;
+}
+.changepage__mydiary {
+  box-shadow: 0px 8px #434242;
+}
+.changepage__mydiary:active {
+  box-shadow: none;
+  position: relative;
+  top: 8px;
 }
 .changepage button {
   width: 100px;
   height: 30px;
 }
-
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-} */
