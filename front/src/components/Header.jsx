@@ -30,8 +30,9 @@ const Header = ({ setPost, diary }) => {
 
     const post = async () => {
       await axios
-        .post(`http://localhost:10000/diary`, {
-          // .post(`http://localhost:3000/diary`, {
+        .post(`/diary`, {
+          //本番用
+          // .post(`http://localhost:3000/diary`, {  //開発用
           id: diary.length + 5,
           firstname: `${postfirstName}`,
           lastname: `${postlastName}`,
