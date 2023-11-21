@@ -29,16 +29,16 @@ module.exports = {
       password: process.env.DB_PASSWORD || "null",
     },
     migrations: {
-      directory: "./db/migrations",
+      directory: "./migrations",
     },
-    directory: "./db/seeds",
+    directory: "./seeds",
   },
 
   production: {
     client: "pg",
     connection: process.env.DATABASE_URL,
     migrations: {
-      directory: "./db/migrations",
+      directory: "./migrations",
     },
   },
 };
