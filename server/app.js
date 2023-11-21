@@ -1,65 +1,69 @@
-const express = require("express");
-const app = express();
-const PORT = process.env.PORT || 3000;
-require("dotenv").config();
+const createServer = (db) => {
+  const express = require("express");
+  const app = express();
+  const PORT = process.env.PORT || 3000;
+  require("dotenv").config();
 
-//jsonオブジェクトを認識できるようになる
-//フロントaxiosからはjson形式で送られる
-app.use(express.json());
-app.use("/", express.static(__dirname + "/public")); //デプロイで必要みたい_ここにフロント入れるのか？
+  //jsonオブジェクトを認識できるようになる
+  //フロントaxiosからはjson形式で送られる
+  app.use(express.json());
 
-//knexfile読み込んでdb接続-----------------
-// const config = require("./knexfile");
-// const knex = require("knex")(config);
+  // app.use("/", express.static(__dirname + "/public")); //デプロイで必要みたい_ここにフロント入れるのか？
+  app.use("/", express.static(__dirname + "../SERVER")); //デプロイで必要みたい_ここにフロント入れるのか？
 
-//環境変数設定----------------------------
-const knex1 = require("knex");
-const knexConfig = require("./knexfile");
-const environment = process.env.NODE_ENV;
-const knex = knex1(knexConfig[environment]);
+  //knexfile読み込んでdb接続-----------------
+  // const config = require("./knexfile");
+  // const knex = require("knex")(config);
 
-//CROSエラー回避-----------------------------
-const cors = require("cors");
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST"],
-  })
-);
+  //環境変数設定----------------------------
+  const knex1 = require("knex");
+  const knexConfig = require("./db/knexfile");
+  const environment = process.env.NODE_ENV;
+  const knex = knex1(knexConfig[environment]);
 
-//get------------------------------------
-app.get("/", async (req, res) => {
-  //CROSエラー回避のヘッダを追加
-  //   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-
-  const result = await knex("diarys")
-    .select()
-    .then((res) => {
-      console.log("@@@@@@@@@@@@@_GET通信成功");
-      return res;
-      //   res.status(200).json(res);
+  //CROSエラー回避-----------------------------
+  const cors = require("cors");
+  app.use(
+    cors({
+      origin: "http://localhost:5173",
+      methods: ["GET", "POST"],
     })
-    .catch(() => {
-      console.log("通信に失敗---------------------");
-      //   console.log('process.env', process.env);
-    });
+  );
 
-  //   res.status(200).send('hello');
-  res.status(200).json(result);
-});
+  //get------------------------------------
+  app.get("/", async (req, res) => {
+    //CROSエラー回避のヘッダを追加
+    //   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
 
-//post------------------------------------
-app.post("/", async (req, res) => {
-  console.log("@@@@@@@@@@@@@_POST", req.body);
-  await knex("diarys").insert(req.body);
-  console.log("POST追加OK");
-  res.status(200).send(req.body);
-});
+    const result = await knex("diarys")
+      .select()
+      .then((res) => {
+        console.log("@@@@@@@@@@@@@_GET通信成功");
+        return res;
+        //   res.status(200).json(res);
+      })
+      .catch(() => {
+        console.log("通信に失敗---------------------");
+      });
+    res.status(200).json(result);
+  });
 
-//server起動------------------------------
-app.listen(PORT, () => {
-  console.log("server起動");
-  console.log(`http://localhost:${PORT}`);
-  // console.log("@@@@@@@@@@@@env", process.env.NODE_ENV);
-  // console.log("@@@@@@@@@@@@env", knex);
-});
+  //post------------------------------------
+  app.post("/", async (req, res) => {
+    console.log("@@@@@@@@@@@@@_POST", req.body);
+    await knex("diarys").insert(req.body);
+    console.log("POST追加OK");
+    res.status(200).send(req.body);
+  });
+
+  //server起動------------------------------
+  app.listen(PORT, () => {
+    console.log("server起動");
+    console.log(`http://localhost:${PORT}`);
+  });
+};
+createServer();
+
+module.exports = {
+  createServer,
+};

@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import React from "react";
 import axios from "axios";
 import "./Header.css";
+let count = 20;
 
 const Header = ({ setPost }) => {
   // const Header = ({ firstname, lastname, postDiary }) => {
@@ -14,10 +15,18 @@ const Header = ({ setPost }) => {
     const postlastName = inputlastname.current.value;
     const postdiary = inputDiary.current.value;
     const now = new Date().toLocaleDateString();
+
+    //空文字バリデーションチェック------------------
+    if (postfirstName === "" || postlastName === "" || postdiary === "") {
+      window.alert("名前 , 日記内容を記入して下さい");
+      return;
+    }
+
     inputFirstname.current.value = "";
     inputlastname.current.value = "";
     inputDiary.current.value = "";
-    // console.log("1", postfirstName);
+    count++;
+    console.log("1", count);
     // console.log("2", postlastName);
     // console.log("3", postdiary);
     // console.log("4", now);
@@ -25,7 +34,7 @@ const Header = ({ setPost }) => {
     const post = async () => {
       await axios
         .post(`http://localhost:3000`, {
-          id: 18,
+          id: count,
           firstname: `${postfirstName}`,
           lastname: `${postlastName}`,
           diary: `${postdiary}`,

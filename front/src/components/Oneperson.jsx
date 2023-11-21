@@ -1,7 +1,7 @@
 import React from "react";
 
 const Oneperson = ({ diary }) => {
-  console.log("aaaaaaaaaaasingle", diary);
+  // console.log("aaaaaaaaaaasingle", diary);
   const diaryfilter = diary.filter((src) => {
     return src.firstname === "takeda" && src.lastname === "tetuya"; //暫定でハードコーディング
   });
@@ -19,7 +19,7 @@ const Oneperson = ({ diary }) => {
     );
     // <div id={src.date} className='onediary'>{src.firstname} {src.lastname} {src.diary}</div>
   });
-  console.log("--------------", diaryLists);
+  // console.log("--------------", diaryLists);
   return <div>{diaryLists}</div>;
 };
 

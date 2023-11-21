@@ -24,7 +24,7 @@ module.exports = {
       // database: process.env.POSTGRES_DB || 'diary',
       host: process.env.DB_HOST || "127.0.0.1",
       port: process.env.DB_PORT || 5432,
-      database: process.env.DB_NAME || "test",
+      database: process.env.DB_NAME || "diary",
       user: process.env.DB_USERNAME || "user",
       password: process.env.DB_PASSWORD || "null",
     },
