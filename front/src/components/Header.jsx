@@ -30,7 +30,8 @@ const Header = ({ setPost, diary }) => {
 
     const post = async () => {
       await axios
-        .post(`http://localhost:3000/diary`, {
+        .post(`http://localhost:${process.env.NODE_ENV}/diary`, {
+          // .post(`http://localhost:3000/diary`, {
           id: diary.length + 5,
           firstname: `${postfirstName}`,
           lastname: `${postlastName}`,
