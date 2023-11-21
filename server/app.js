@@ -1,7 +1,7 @@
 const createServer = (db) => {
   const express = require("express");
   const app = express();
-  const PORT = process.env.PORT || 3000;
+  const PORT = process.env.PORT || 10000;
   require("dotenv").config();
 
   //jsonオブジェクトを認識できるようになる
@@ -27,7 +27,7 @@ const createServer = (db) => {
   app.use(
     cors({
       origin: "http://localhost:10000",
-      // origin: "http://localhost:5173",
+      origin: "http://localhost:5173",
       methods: ["GET", "POST"],
     })
   );
