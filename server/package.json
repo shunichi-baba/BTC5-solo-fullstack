@@ -14,7 +14,7 @@
     "rollback2": "knex migrate:rollback --knexfile db/knexfile.js ",
     "seed": "knex seed:run",
     "seed2": "knex seed:run --knexfile db/knexfile.js",
-    "build": "npm install",
+    "build": "npm install && knex migrate:latest",
     "start": "node ./src/index.js"
   },
   "author": "",

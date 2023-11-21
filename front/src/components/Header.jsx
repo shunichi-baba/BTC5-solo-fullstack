@@ -2,9 +2,8 @@ import { useState, useRef } from "react";
 import React from "react";
 import axios from "axios";
 import "./Header.css";
-let count = 20;
 
-const Header = ({ setPost }) => {
+const Header = ({ setPost, diary }) => {
   // const Header = ({ firstname, lastname, postDiary }) => {
   const inputFirstname = useRef();
   const inputlastname = useRef();
@@ -25,16 +24,14 @@ const Header = ({ setPost }) => {
     inputFirstname.current.value = "";
     inputlastname.current.value = "";
     inputDiary.current.value = "";
-    count++;
-    console.log("1", count);
     // console.log("2", postlastName);
     // console.log("3", postdiary);
     // console.log("4", now);
 
     const post = async () => {
       await axios
-        .post(`http://localhost:3000`, {
-          id: count,
+        .post(`http://localhost:3000/diary`, {
+          id: diary.length + 5,
           firstname: `${postfirstName}`,
           lastname: `${postlastName}`,
           diary: `${postdiary}`,

@@ -8,8 +8,9 @@ const createServer = (db) => {
   //フロントaxiosからはjson形式で送られる
   app.use(express.json());
 
-  // app.use("/", express.static(__dirname + "/public")); //デプロイで必要みたい_ここにフロント入れるのか？
-  app.use("/", express.static(__dirname + "../SERVER")); //デプロイで必要みたい_ここにフロント入れるのか？
+  //デプロイで必要みたい_ここにフロントのdistのパスを入れる
+  app.use("/", express.static(__dirname + "../front/dist"));
+  app.use("/", express.static("../front/dist"));
 
   //knexfile読み込んでdb接続-----------------
   // const config = require("./knexfile");
@@ -31,10 +32,10 @@ const createServer = (db) => {
   );
 
   //get------------------------------------
-  app.get("/", async (req, res) => {
+  app.get("/diary", async (req, res) => {
     //CROSエラー回避のヘッダを追加
     //   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-
+    // console.log("@@@@@@@@@@@@@@req", req);
     const result = await knex("diarys")
       .select()
       .then((res) => {
@@ -49,7 +50,7 @@ const createServer = (db) => {
   });
 
   //post------------------------------------
-  app.post("/", async (req, res) => {
+  app.post("/diary", async (req, res) => {
     console.log("@@@@@@@@@@@@@_POST", req.body);
     await knex("diarys").insert(req.body);
     console.log("POST追加OK");

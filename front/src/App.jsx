@@ -4,7 +4,7 @@ import axios from "axios";
 import Alldays from "./components/Alldays";
 import Oneperson from "./components/Oneperson";
 import Header from "./components/Header";
-import Img from "./assets/diary.jpeg";
+// import Img from "./assets/diary.jpeg";
 
 function App() {
   const [diary, setDiary] = useState([]);
@@ -13,20 +13,13 @@ function App() {
   const [lastName, setLastname] = useState("tetuya");
   const [post, setPost] = useState();
 
-  // const inputFirstname = useRef()
-  // const inputlastname = useRef()
-  // const inputDiary = useRef()
-  // const inputButton = (e)=>{
-  //   console.log(inputDiary.current.value)
-  // }
-
   useEffect(() => {
     //get------------------------------------
     const get = async () => {
       await axios
-        .get(`http://localhost:3000`) //リクエストを飛ばすpath
+        .get(`http://localhost:3000/diary`) //リクエストを飛ばすpath
         .then((res) => {
-          // console.log('^^^^^^^^^^^^^^', response);
+          // console.log("^^^^^^^^^^^^^^", res.data);
           setDiary(res.data);
         }) //成功した場合、postsを更新する（then）
         .catch(() => {
@@ -49,6 +42,7 @@ function App() {
           setfirstName={setFirstname}
           setlastName={setLastname}
           setPost={setPost}
+          diary={diary}
         />
       </div>
       <div>
