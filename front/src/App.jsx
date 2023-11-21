@@ -17,7 +17,7 @@ function App() {
     //get------------------------------------
     const get = async () => {
       await axios
-        .get(`http://localhost:${process.env.NODE_ENV}/diary`) //リクエストを飛ばすpath
+        .get(`http://localhost:10000/diary`) //リクエストを飛ばすpath
         // .get(`http://localhost:3000/diary`) //リクエストを飛ばすpath
         .then((res) => {
           // console.log("^^^^^^^^^^^^^^", res.data);

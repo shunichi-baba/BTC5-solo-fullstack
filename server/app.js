@@ -26,7 +26,8 @@ const createServer = (db) => {
   const cors = require("cors");
   app.use(
     cors({
-      origin: "http://localhost:5173",
+      origin: "http://localhost:10000",
+      // origin: "http://localhost:5173",
       methods: ["GET", "POST"],
     })
   );
